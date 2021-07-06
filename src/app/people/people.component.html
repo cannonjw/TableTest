@@ -10,7 +10,10 @@
     <tbody  cdkDropList
             [cdkDropListData]="dataSource" 
             (cdkDropListDropped)="onDrop($event)">
-        <tr *ngFor='let person of getPeople()' cdkDrag cdkDragLockAxis="y">
+        <tr *ngFor='let person of getPeople()' 
+                cdkDrag 
+                [cdkDragData]="person" 
+                cdkDragLockAxis="y">
             <th>
                 <div class="drag-handle">
                   <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container>

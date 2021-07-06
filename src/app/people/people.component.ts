@@ -6,6 +6,7 @@ export interface IPeople {
   Name: string;
   Role: string;
   Weapon: string;
+  SortOrder: number;
 }
 
 @Component({
@@ -20,25 +21,29 @@ export class PeopleComponent implements OnInit {
       Id: 1,
       Name: "John Diggle",
       Role: "Body Guard",
-      Weapon: "Gun"
+      Weapon: "Gun",
+      SortOrder: 1
     },
     {
       Id: 2,
       Name: "Oliver Queen",
       Role: "Lead",
-      Weapon: "Bow and Arrow"
+      Weapon: "Bow and Arrow",
+      SortOrder: 2
     },
     {
       Id: 3,
       Name: "Felicity Smoak",
       Role: "Technician",
-      Weapon: "Computer"
+      Weapon: "Computer",
+      SortOrder: 3
     },
     {
       Id: 4,
       Name: "Thea Queen",
       Role: "Support",
-      Weapon: "Bow and Arrow"
+      Weapon: "Bow and Arrow",
+      SortOrder: 4
     }
   ]
   constructor() { }
@@ -50,8 +55,13 @@ export class PeopleComponent implements OnInit {
     return this.dataSource;
   }
 
-  onDrop(event: CdkDragDrop<IPeople>) {
-    console.log(event.container.data);
+  onDrop(event: CdkDragDrop<IPeople[]>) {
+    let dbItem = this.dataSource.find(d => d.Id = event.item.data.Id);
+    let newIndex = event.currentIndex + 1;
+    console.log(newIndex);
+    console.log(event.item.data.Id);
+    this.dataSource[event.previousIndex].SortOrder = newIndex;
+    console.log(this.dataSource);
     console.log("Previous Index: " + event.previousIndex + " Current Index: " + event.currentIndex);
     moveItemInArray(this.dataSource,event.previousIndex, event.currentIndex);
   }
