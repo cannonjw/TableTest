@@ -1,0 +1,18 @@
+<table class='table; border: 3px'>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Weapon</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let person of getPeople()'>
+            <td>{{person.Id}}</td>
+            <td>{{person.Name}}</td>
+            <td>{{person.Role}}</td>
+            <td>{{person.Weapon}}</td>
+        </tr>
+    </tbody>
+</table>
