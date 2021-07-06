@@ -1,4 +1,4 @@
-<table class='table; border: 3px'>
+<table class='table table-bordered table-striped'>
     <thead>
         <tr>
             <th>Id</th>
@@ -7,9 +7,17 @@
             <th>Weapon</th>
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor='let person of getPeople()'>
-            <td>{{person.Id}}</td>
+    <tbody  cdkDropList
+            [cdkDropListData]="dataSource" 
+            (cdkDropListDropped)="onDrop($event)">
+        <tr *ngFor='let person of getPeople()' cdkDrag cdkDragLockAxis="y">
+            <th>
+                <div class="drag-handle">
+                  <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container>
+                  {{ person.Id }}
+                </div>
+            </th>
+        
             <td>{{person.Name}}</td>
             <td>{{person.Role}}</td>
             <td>{{person.Weapon}}</td>

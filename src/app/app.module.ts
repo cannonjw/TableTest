@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,7 +11,8 @@ import { PeopleComponent } from './people/people.component';
     PeopleComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
